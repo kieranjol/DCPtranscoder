@@ -17,12 +17,12 @@ root.update()
 video_dir = tkFileDialog.askdirectory(parent=root)
 os.chdir(video_dir)
 #csv       = tkFileDialog.asksaveasfile(parent=root, defaultextension='.csv') 
-for root, dirs, files in os.walk(video_dir):
+
    
        
-       mxfs = filter(lambda x: x.endswith('.mxf'), os.listdir(video_dir))
-       output = mxfs[0] + '.mov'
-       subprocess.call(['ffmpeg',
+mxfs = filter(lambda x: x.endswith('.mxf'), os.listdir(video_dir))
+output = mxfs[0] + '.mov'
+subprocess.call(['ffmpeg',
                        '-i', mxfs[0],
                        '-i', mxfs[1],
                        '-c:v', 'libx264',
