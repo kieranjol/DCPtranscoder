@@ -1,4 +1,5 @@
 # DCPtranscoder
+Functional, but wonky proof of concept. Output of quicktime is currently IN the DCP, which is not cool! Will fix later when I've time. <br>
 
 1.Search for package<br>
 2.check number of mxfs<br>
