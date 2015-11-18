@@ -13,14 +13,15 @@ import fnmatch
 my_match = []
 # Create file-open dialog.
 root.update()
-# Directory with files that we want to transcode losslessly and generate metadata for
+
 video_dir = tkFileDialog.askdirectory(parent=root)
 os.chdir(video_dir)
-#csv       = tkFileDialog.asksaveasfile(parent=root, defaultextension='.csv') 
+
 
    
        
 mxfs = filter(lambda x: x.endswith('.mxf'), os.listdir(video_dir))
+#output is currently within the DCP. This is bad, will add option for output dir later.
 output = mxfs[0] + '.mov'
 subprocess.call(['ffmpeg',
                        '-i', mxfs[0],
