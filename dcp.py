@@ -1,7 +1,7 @@
 import subprocess
 import sys
 import os
-from Tkinter import *
+from Tkinter import Tk
 import tkFileDialog
 root = Tk()
 
@@ -22,4 +22,5 @@ subprocess.call(['ffmpeg',
                        '-c:v', 'libx264',
                        '-crf', '22',
                        '-pix_fmt', 'yuv420p',
+                       '-c:a', 'copy',
                        output])
