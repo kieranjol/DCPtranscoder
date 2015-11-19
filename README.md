@@ -1,6 +1,7 @@
 # DCPtranscoder
-Functional, but wonky proof of concept. Output of quicktime is currently IN the DCP, which is not cool! Will fix later when I've time. <br>
+Functional proof of concept, with file open and file save as dialogs! <br>
 
+Future plan: - include the following but allow selection of output codecs.
 1.Search for package<br>
 2.check number of mxfs<br>
 3.if 2, then just ffmpeg -i video.mxf -i audio.mxf output.mov <br>
