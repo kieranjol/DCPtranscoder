@@ -1,4 +1,3 @@
-
 import subprocess
 import sys
 import os
@@ -12,10 +11,11 @@ root.update()
 
 video_dir = tkFileDialog.askdirectory(parent=root)
 os.chdir(video_dir)
+output = tkFileDialog.asksaveasfilename(parent=root)+ '.mov'
 
 mxfs = filter(lambda x: x.endswith('.mxf'), os.listdir(video_dir))
 #output is currently within the DCP. This is bad, will add option for output dir later.
-output = mxfs[0] + '.mov'
+
 subprocess.call(['ffmpeg',
                        '-i', mxfs[0],
                        '-i', mxfs[1],
@@ -23,4 +23,3 @@ subprocess.call(['ffmpeg',
                        '-crf', '22',
                        '-pix_fmt', 'yuv420p',
                        output])
-       
