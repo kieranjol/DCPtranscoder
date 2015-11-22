@@ -20,12 +20,14 @@ outputaudio = filename + '.wav'
 outputmuxed = filename + '_muxed.mov'
 
 # Search through XML for filenames containing picture.
-picture_files = subprocess.check_output(['xml', 'sel', 
-                                         '-N', 'x=http://www.digicine.com/PROTO-ASDCP-PKL-20040311#',
-                                         '-t', '-m', "//x:Asset[contains(x:Type,'Picture')]",
-                                         '-v', 'x:OriginalFileName',
-                                         '-n', filename ]).splitlines() 
-
+def get_files(variable,typee):
+    variable = subprocess.check_output(['xml', 'sel', 
+                                             '-N', 'x=http://www.digicine.com/PROTO-ASDCP-PKL-20040311#',
+                                             '-t', '-m', typee,
+                                             '-v', 'x:OriginalFileName',
+                                             '-n', filename ]).splitlines() 
+    return variable
+picture_files = get_files('picture_files',"//x:Asset[contains(x:Type,'Picture')]")
 # Transformations to picture_files in order to fit the ffmpeg concat text standard.
 dir_append = wd + '/'
 concat_string = 'file \'' 
@@ -43,8 +45,7 @@ for item in finalpic:
 file.close()  # ffmpeg can't access the textfile until it's closed.
 
 # Search through XML for filenames containing audio.
-audio_files = subprocess.check_output(['xml', 'sel', '-N', 'x=http://www.digicine.com/PROTO-ASDCP-PKL-20040311#', '-t', '-m', "//x:Asset[contains(x:Type,'Sound')]", '-v', 'x:OriginalFileName', '-n', filename ]).splitlines() 
-
+audio_files = get_files('audio_files',"//x:Asset[contains(x:Type,'Sound')]")
 # Transformations to picture_files in order to fit the ffmpeg concat text standard.
 dir_append = wd + '/'
 concat_string = 'file \'' 
