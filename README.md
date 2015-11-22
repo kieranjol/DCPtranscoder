@@ -1,5 +1,5 @@
 # DCPtranscoder
-Single_reel.py appears to work with SMPTE/INTEROP DCPS if audio is present. <br>
+Single_reel.py works with all SMPTE/INTEROP DCPS that I have tested, if audio is present. <br>
 Interop_multireeler.py currently only works with Interop DCPS with audio<br>
 
 Functional proof of concept, with file open and file save as dialogs! <br>
