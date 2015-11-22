@@ -1,5 +1,6 @@
 # DCPtranscoder
-Currently only works with Interop DCPS (most likely - haven't tested SMPTE)<br>
+Multi reel currently only works with Interop DCPS (most likely - haven't tested SMPTE)<br>
+Single reel should work just fine regardless of standard <br>
 Functional proof of concept, with file open and file save as dialogs! <br>
 Tested in Ubuntu and OSX. Should work in windows and if not, why not!? aka I'll test it later. <br>
 
