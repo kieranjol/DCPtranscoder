@@ -1,4 +1,6 @@
 # DCPtranscoder
+Transcode those DCPs to a single file!<br>
+
 EEk! New files are currently saved within the package for multireel.py. Will fix tomorrow! <br>
 
 Single_reel.py works with all SMPTE/INTEROP DCPS that I have tested, if audio is present. <br>
