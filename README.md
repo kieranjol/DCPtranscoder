@@ -1,8 +1,8 @@
 # DCPtranscoder
 Transcode those DCPs to a single file!<br>
-Instructions:<br>
-single_reel.py:         Select a directory and ffmpeg will combine your audio and video to a prores.mov<br>
-Interop_multireeler.py: Select the PKL.XML to transcode your audio and video mxfs to a prores.mov.<br>
+<b>Instructions:</b><br>
+<b>single_reel.py:</b>  Select a directory and ffmpeg will combine your audio and video to a prores.mov<br>
+<b>Interop_multireeler.py:</b> Select the PKL.XML to transcode your audio and video mxfs to a prores.mov.<br>
 
 EEk! New files are currently saved within the package for multireel.py. Will fix tomorrow! <br>
 
