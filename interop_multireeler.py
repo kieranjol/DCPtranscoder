@@ -30,14 +30,16 @@ def get_files(variable,typee):
 picture_files = get_files('picture_files',"//x:Asset[contains(x:Type,'Picture')]")
 # Transformations to picture_files in order to fit the ffmpeg concat text standard.
 
-dir_append = wd + '/'
-concat_string = 'file \'' 
-concat_append = '\''
-picture_files_fix1 = [dir_append + x for x in picture_files]
-# http://stackoverflow.com/a/2050721/2188572
-picture_files_fix2 = [concat_string + x for x in picture_files_fix1]
-finalpic = [x + concat_append for x in picture_files_fix2]
-
+def trans(fix1, which_list, fix2, final_list):
+    dir_append = wd + '/'
+    concat_string = 'file \'' 
+    concat_append = '\''
+    fix1 = [dir_append + x for x in which_list]
+    # http://stackoverflow.com/a/2050721/2188572
+    fix2 = [concat_string + x for x in fix1]
+    final_list = [x + concat_append for x in fix2]
+    return final_list
+trans('picture_files_fix1', 'picture_files', 'picture_files_fix2', 'finalpic')
 # Write the list of filenames containing picture to a textfile. 
 # http://www.pythonforbeginners.com/files/reading-and-writing-files-in-python
 def write_textfile(textfile, list_type):
@@ -46,21 +48,15 @@ def write_textfile(textfile, list_type):
       file.write("%s\n" % item)
     file.close()  # ffmpeg can't access the textfile until it's closed.
 
-write_textfile(video_concat_textfile, finalpic)
+write_textfile('video_concat_textfile', 'finalpic')
 # Search through XML for filenames containing audio.
 audio_files = get_files('audio_files',"//x:Asset[contains(x:Type,'Sound')]")
 # Transformations to picture_files in order to fit the ffmpeg concat text standard.
-dir_append = wd + '/'
-concat_string = 'file \'' 
-concat_append = '\''
-audio_raw = [dir_append + x for x in audio_files]
-# http://stackoverflow.com/a/2050721/2188572
-newaudio = [concat_string + x for x in audio_raw]
-finalaudio = [x + concat_append for x in newaudio]
+trans('audio_files_fix1', 'audio_files', 'audio_files_fix2', 'finalaudio')
 
 # Write the list of filenames containing picture to a textfile. 
 # http://www.pythonforbeginners.com/files/reading-and-writing-files-in-python
-write_textfile(audio_concat_textfile, finalaudio)
+write_textfile('audio_concat_textfile', 'finalaudio')
  
 # Call ffmpeg to join all audio files into one WAV file
 subprocess.call(['ffmpeg',
