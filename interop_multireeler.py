@@ -19,6 +19,15 @@ audio_concat_textfile = filename + 'audio.txt'
 outputaudio = filename + '.wav'
 outputmuxed = filename + '_muxed.mov'
 
+# Search through XML for filenames containing picture.
+def get_files(variable,typee):
+    variable = subprocess.check_output(['xml', 'sel', 
+                                             '-N', 'x=http://www.digicine.com/PROTO-ASDCP-PKL-20040311#',
+                                             '-t', '-m', typee,
+                                             '-v', 'x:OriginalFileName',
+                                             '-n', filename ]).splitlines() 
+    return variable
+picture_files = get_files('picture_files',"//x:Asset[contains(x:Type,'Picture')]")
 # Transformations to picture_files in order to fit the ffmpeg concat text standard.
 
 dir_append = wd + '/'
