@@ -12,12 +12,12 @@ root.update()
 filename = tkFileDialog.askopenfilename(parent=root)
 
 # Set variables for various filenames.
-output = filename + '_concattt.mov'
-video_concat_textfile = filename + '.txt'
+output = tkFileDialog.asksaveasfilename(parent=root) + '.mov'
+video_concat_textfile = output + '.txt'
 wd = os.path.dirname(filename)
-audio_concat_textfile = filename + 'audio.txt'
-outputaudio = filename + '.wav'
-outputmuxed = filename + '_muxed.mov'
+audio_concat_textfile = output + 'audio.txt'
+outputaudio = output + '.wav'
+outputmuxed = output + '_muxed.mov'
 
 # Search through XML for filenames containing picture.
 def get_files(variable,typee):
