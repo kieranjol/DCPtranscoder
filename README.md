@@ -4,7 +4,7 @@ Transcode those DCPs to a single file!<br>
 <b>single_reel.py:</b>  Select a directory and ffmpeg will combine your audio and video to a prores.mov<br>
 <b>Interop_multireeler.py:</b> Select the PKL.XML to transcode your audio and video mxfs to a prores.mov.<br>
 
-EEk! New files are currently saved within the package for multireel.py. Will fix tomorrow! <br>
+
 
 Single_reel.py works with all SMPTE/INTEROP DCPS that I have tested, if audio is present. <br>
 Interop_multireeler.py currently only works with Interop DCPS with audio<br>
