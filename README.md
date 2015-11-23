@@ -3,6 +3,7 @@ Transcode those DCPs to a single file!<br>
 <b>Instructions:</b><br>
 <b>single_reel.py:</b>  Select a directory and ffmpeg will combine your audio and video to a prores.mov<br>
 <b>Interop_multireeler.py:</b> Select the PKL.XML to transcode your audio and video mxfs to a prores.mov.<br>
+Limitation with Interop_multireeler: Filenames currently generated from <originalfilename> element in the PKL. This is not always present.<br>
 
 
 
