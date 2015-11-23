@@ -29,6 +29,7 @@ def get_files(variable,typee):
     return variable
 picture_files = get_files('picture_files',"//x:Asset[contains(x:Type,'Picture')]")
 # Transformations to picture_files in order to fit the ffmpeg concat text standard.
+
 dir_append = wd + '/'
 concat_string = 'file \'' 
 concat_append = '\''
@@ -39,11 +40,13 @@ finalpic = [x + concat_append for x in picture_files_fix2]
 
 # Write the list of filenames containing picture to a textfile. 
 # http://www.pythonforbeginners.com/files/reading-and-writing-files-in-python
-file = open(video_concat_textfile, "w")
-for item in finalpic:
-  file.write("%s\n" % item)
-file.close()  # ffmpeg can't access the textfile until it's closed.
+def write_textfile(textfile, list_type):
+    file = open(textfile, "w")
+    for item in list_type:
+      file.write("%s\n" % item)
+    file.close()  # ffmpeg can't access the textfile until it's closed.
 
+write_textfile(video_concat_textfile, finalpic)
 # Search through XML for filenames containing audio.
 audio_files = get_files('audio_files',"//x:Asset[contains(x:Type,'Sound')]")
 # Transformations to picture_files in order to fit the ffmpeg concat text standard.
@@ -57,11 +60,8 @@ finalaudio = [x + concat_append for x in newaudio]
 
 # Write the list of filenames containing picture to a textfile. 
 # http://www.pythonforbeginners.com/files/reading-and-writing-files-in-python
-file = open(audio_concat_textfile, "w")
-for item in finalaudio:
-  file.write("%s\n" % item)
-file.close()  
-
+write_textfile(audio_concat_textfile, finalaudio)
+ 
 # Call ffmpeg to join all audio files into one WAV file
 subprocess.call(['ffmpeg',
                          '-f', 'concat',
